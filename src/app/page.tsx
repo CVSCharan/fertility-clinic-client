@@ -1,101 +1,158 @@
+import React from "react";
+import Link from "next/link";
 import Image from "next/image";
+import Hero from "./components/Hero";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const services = [
+    {
+      title: "IVF Treatment",
+      description:
+        "State-of-the-art in vitro fertilization with personalized care protocols.",
+      icon: "/icons/ivf.svg",
+    },
+    {
+      title: "Fertility Assessment",
+      description:
+        "Comprehensive evaluation to understand your fertility status and options.",
+      icon: "/icons/assessment.svg",
+    },
+    {
+      title: "Genetic Testing",
+      description:
+        "Advanced genetic screening for informed family planning decisions.",
+      icon: "/icons/genetic.svg",
+    },
+    {
+      title: "Egg Freezing",
+      description:
+        "Preserve your fertility options for the future with our advanced freezing techniques.",
+      icon: "/icons/freezing.svg",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      <Hero />
+
+      {/* Services Section */}
+      <section className="section bg-gray-50">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-[var(--primary)]">Our Services</h2>
+            <p className="text-gray-600">
+              We offer a comprehensive range of fertility treatments using the
+              latest technology and evidence-based approaches.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div className="w-16 h-16 mb-4 mx-auto">
+                  <Image
+                    src={service.icon}
+                    alt={service.title}
+                    width={64}
+                    height={64}
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-center">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-center">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="section">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[500px] rounded-lg overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+                <div className="text-white text-center p-8">
+                  <h3 className="text-3xl font-serif mb-4">Expert Care</h3>
+                  <p className="text-lg opacity-90">
+                    Dedicated to helping you achieve your dream of parenthood
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h2 className="text-[var(--primary)]">Why Choose Us</h2>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[var(--primary)] rounded-full flex items-center justify-center text-white">
+                    1
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
+                    <p className="text-gray-600">
+                      Our fertility specialists have decades of combined
+                      experience and are leaders in their field.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[var(--primary)] rounded-full flex items-center justify-center text-white">
+                    2
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Advanced Technology
+                    </h3>
+                    <p className="text-gray-600">
+                      We use the latest technology and techniques to maximize
+                      your chances of success.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[var(--primary)] rounded-full flex items-center justify-center text-white">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Personalized Care
+                    </h3>
+                    <p className="text-gray-600">
+                      Every patient receives a customized treatment plan
+                      tailored to their unique situation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <Link href="/about" className="btn-primary inline-block">
+                Learn More About Us
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section bg-[var(--primary)] text-white">
+        <div className="container text-center">
+          <h2 className="text-4xl font-serif font-bold mb-6">
+            Start Your Journey Today
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Take the first step towards building your family. Schedule a
+            consultation with our fertility experts.
+          </p>
+          <Link href="/contact" className="btn-secondary">
+            Contact Us
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
